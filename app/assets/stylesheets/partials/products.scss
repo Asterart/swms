@@ -1,0 +1,108 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables.scss";
+
+.page-content{
+  background-color: $main-content-bg-color;
+  height: 100vh;
+  width: 100%;
+  min-width: 1200px;
+  padding-left: 250px;
+  overflow-y: hidden;
+  overflow-y: scroll;
+
+  .row{
+    border-bottom: 1px solid #fff;
+  }
+  .products-title{
+    font-weight: 600;
+  }
+
+  .products-icons-style{
+    a{
+      text-decoration: none;
+      color: $main-menu-products-icons-color;
+      &:hover{
+        color: $main-menu-products-icons-color-hover;
+      }
+    }
+  }
+
+  .products-list-sections{
+    margin: 0 15px 0 15px!important;
+    padding: 15px 0 15px 0;
+    form{
+      display: contents;
+    }
+    .products-checkboxes{
+      min-width: min-content;
+      max-width: 2%;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="product_id"]{
+        width: inherit;
+      }
+    }
+    .products-images{
+      min-width: 60px;
+      max-width: 5%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="image"]{
+        width: inherit;
+      }
+    }
+    .products-names{
+      min-width: min-content;
+      max-width: 20%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="name"]{
+        width: inherit;
+      }
+    }
+    .products-descs{
+      min-width: min-content;
+      //max-width: 25%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="content"]{
+        width: inherit;
+      }
+    }
+    .products-qty{
+      min-width: min-content;
+      max-width: 100px;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="range_min"]{
+        max-width: 40px;
+      }
+      input[name="range_max"]{
+        max-width: 40px;
+      }
+    }
+    .products-actions{
+      min-width: min-content;
+      max-width: 100px;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      a{
+        max-width: 50px;
+        padding-right: 10px;
+        text-decoration: none;
+        color: $main-menu-products-icons-color;
+        &:hover{
+          color: $main-menu-products-icons-color-hover;
+        }
+      }
+    }
+  }
+}

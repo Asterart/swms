@@ -1,0 +1,6 @@
+<div class="col-12 text-right products-icons-style">
+  <%= link_to '', new_product_path, class: "fa fa-plus-circle", title: "Dodaj produkt" %>
+  <%= link_to '', import_modal_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: "fa fa-upload", title: "Wgraj produkty z pliku"}  %>
+  <%= link_to '', export_path, class: "fa fa-file-export", title: "Eksportuj produkty" %>
+  <%= link_to '', products_url, class: "fa fa-times-circle", title: "Wyczyść filtry" %>
+</div>

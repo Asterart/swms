@@ -1,0 +1,17 @@
+<div class="row products-list-sections">
+  <%= form_tag(products_path, :method => 'get') do %>
+    <div class="col products-checkboxes"></div>
+    <div class="col products-images">
+    </div>
+    <div class="col products-descs">
+      <%= text_field_tag :content, params[:content], placeholder: "Fragment nazwy, opisu lub indeks" %>
+    </div>
+    <div class="col products-qty">
+      <%= text_field_tag :range_min, params[:range_min], placeholder: "od" %>
+      <%= text_field_tag :range_max, params[:range_max], placeholder: "do" %>
+    </div>
+    <div class="col products-actions">
+      <%= submit_tag 'Szukaj' %>
+    </div>
+  <% end %>
+</div>

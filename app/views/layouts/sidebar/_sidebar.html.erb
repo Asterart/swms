@@ -1,0 +1,27 @@
+<%= link_to '', '#', class: "btn btn-sm btn-dark fas fa-bars", id: "show-sidebar" %>
+
+<nav id="sidebar" class="sidebar-wrapper">
+  <div class="sidebar-content">
+    <div class="sidebar-brand">
+      <%= link_to 'Pulpit', root_path %>
+      <div id="close-sidebar">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <%= render 'layouts/sidebar/components/userinformation' %>
+    <%= render 'layouts/sidebar/components/sidebarmenu' %>
+  </div>
+  <div class="sidebar-footer">
+    <a href="#">
+      <i class="fa fa-bell"></i>
+      <span class="badge badge-pill badge-warning notification">3</span>
+    </a>
+    <a href="#">
+      <i class="fa fa-cog"></i>
+      <span class="badge-sonar"></span>
+    </a>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-power-off"></i>
+    <% end %>
+  </div>
+</nav>

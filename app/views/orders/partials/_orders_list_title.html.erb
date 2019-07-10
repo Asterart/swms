@@ -1,0 +1,34 @@
+<% if mode == "new" %>
+<!--mode for creating new order with choosen client  -->
+  <div class="row orders-list-sections orders-title">
+    <div class="col-md-1 border orders-checkboxes">O Z F P</div>
+    <div class="col-md-2 border orders-client">Klient</div>
+    <div class="col-md-1 border orders-total">Kwota</div>
+    <div class="col-md-2 border orders-delivery">Dostawa</div>
+    <div class="col-md-4 border orders-products">Towar</div>
+    <div class="col-md-2 border orders-notes">Uwagi</div>
+  </div>
+  <!-- mode for order index view -->
+<% elsif mode == "all" %>
+  <div class="row orders-list-sections orders-title">
+    <div class="col-md-1 border orders-checkboxes">O Z F P</div>
+    <div class="col-md-1 border orders-date">Data</div>
+    <div class="col-md-1 border orders-client">Klient</div>
+    <div class="col-md-1 border orders-total">Kwota</div>
+    <div class="col-md-2 border orders-delivery">Dostawa</div>
+    <div class="col-md-4 border orders-products">Towar</div>
+    <div class="col-md-2 border orders-notes">Uwagi</div>
+  </div>
+<% else %>
+<!-- mode for inside client panel orders view -->
+  <div class="row orders-list-sections orders-title">
+    <div class="col-md-1 border orders-checkboxes">O Z F P</div>
+    <div class="col-md-1 border orders-date">Data zakupu</div>
+    <div class="col-md-1 border orders-total">Kwota</div>
+    <div class="col-md-2 border orders-delivery">Dostawa</div>
+    <div class="col-md-4 border orders-products">Towar</div>
+    <div class="col-md-2 border orders-notes">Uwagi</div>
+    <div class="col-md-1 border orders-actions">Akcje</div>
+  </div>
+  <%= render 'orders/partials/orders_list_all' %>
+<% end %>

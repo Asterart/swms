@@ -1,0 +1,62 @@
+<li class="header-menu">
+  <span>Produkty</span>
+</li>
+<li class="sidebar-dropdown">
+  <a href="#">
+    <i class="fa fa-cubes"></i>
+    <span>Towary</span>
+  </a>
+  <div class="sidebar-submenu">
+    <ul>
+      <li>
+        <%= link_to products_path do %>
+          Asortyment
+          <span class="badge badge-pill badge-danger" title="Brakujące towary">
+            <%# <%= ProductsController.LowQtyProducts.size %>
+          </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to 'Dostawa', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Zużycie', '#' %>
+      </li>
+    </ul>
+  </div>
+</li>
+<li class="sidebar-dropdown">
+  <a href="#">
+    <i class="fa fa-warehouse"></i>
+    <span>Magazyny</span>
+  </a>
+  <div class="sidebar-submenu">
+    <ul>
+      <li>
+        <%= link_to 'Magazyny', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Inwentaryzacja', '#' %>
+      </li>
+    </ul>
+  </div>
+</li>
+<li class="sidebar-dropdown">
+  <a href="#">
+    <i class="fa fa-shopping-cart"></i>
+    <span>Sprzedaż</span>
+  </a>
+  <div class="sidebar-submenu">
+    <ul>
+      <li>
+        <%= link_to 'Detaliczna', sprzedaz_detaliczna_url, title: "Wybierz klienta i kliknij na koszyk" %>
+      </li>
+      <li>
+        <%= link_to 'Hurtowa', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Zwroty', '#' %>
+      </li>
+    </ul>
+  </div>
+</li>

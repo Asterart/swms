@@ -1,0 +1,59 @@
+<div class="client-title">
+  <% if mode_type == 'new' || mode_type == 'edit' %>
+    <%= client.client_name %>
+  <% else %>
+    <%= @client.client_name %>
+  <% end %>
+</div>
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-basic-info-tab" data-toggle="tab" href="#nav-basic-info" role="tab" aria-controls="nav-basic-info" aria-selected="true">Dane osobowe</a>
+    <a class="nav-item nav-link" id="nav-extra-info-tab" data-toggle="tab" href="#nav-extra-info" role="tab" aria-controls="nav-extra-info" aria-selected="false">Dane kontaktowe</a>
+    <a class="nav-item nav-link" id="nav-orders-tab" data-toggle="tab" href="#nav-orders" role="tab" aria-controls="nav-orders" aria-selected="false">Historia zamówień</a>
+    <a class="nav-item nav-link" id="nav-stats-tab" data-toggle="tab" href="#nav-stats" role="tab" aria-controls="nav-stats" aria-selected="false">Statystyki</a>
+  </div>
+</nav>
+
+<% if mode_type == 'new' || mode_type == 'edit' %>
+  <%= form_with(model: client, local: true) do |form| %>
+    <% if client.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(client.errors.count, "error") %> Nie udało się zapisać zmian:</h2>
+        <ul>
+        <% client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="tab-content client-tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-basic-info" role="tabpanel" aria-labelledby="nav-basic-info-tab">
+        <%= render 'clients/edit_partials/basic', client: client, form: form %>
+      </div>
+      <div class="tab-pane fade" id="nav-extra-info" role="tabpanel" aria-labelledby="nav-extra-info-tab">
+        <%= render 'clients/edit_partials/extra', client: client, form: form%>
+      </div>
+      <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-orders-tab">Historia zamówień</div>
+      <div class="tab-pane fade" id="nav-stats" role="tabpanel" aria-labelledby="nav-stats-tab">Statystyki</div>
+      <div class="actions text-center">
+        <span><%= form.submit 'Zapisz', class:"btn btn-primary" %></span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="tab-content client-tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-basic-info" role="tabpanel" aria-labelledby="nav-basic-info-tab">
+      <%= render 'clients/show_partials/basic' %>
+    </div>
+    <div class="tab-pane fade" id="nav-extra-info" role="tabpanel" aria-labelledby="nav-extra-info-tab">
+      <%= render 'clients/show_partials/extra' %>
+    </div>
+    <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-orders-tab">
+      <%= render 'orders/partials/orders_all', client: @client %>
+    </div>
+    <div class="tab-pane fade" id="nav-stats" role="tabpanel" aria-labelledby="nav-stats-tab">
+      <%= render 'clients/stats/order_stats', client: @client %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<div class="client-show">
+  <%= render 'clients/show_partials/header', mode_type: 'new', client: @client %>
+
+  <div class="footer">
+    <%= link_to 'Powrót', clients_path, class:"btn btn-success" %>
+  </div>
+</div>

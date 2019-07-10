@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<div class="product-show">
+  <%= render 'products/show_partials/header', mode_type: 'new', product: @product %>
+
+  <div class="footer">
+    <%= link_to 'Powrót', products_path, class:"btn btn-success" %>
+  </div>
+</div>

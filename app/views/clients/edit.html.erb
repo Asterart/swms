@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<div class="client-show">
+  <%= render 'clients/show_partials/header', mode_type: 'edit', client: @client %>
+
+<%# <%= render 'form', product: @product %>
+
+  <div class="footer">
+    <%= link_to 'Powrót', clients_path, class:"btn btn-success" %>
+    <span style="float:right;"><%= link_to 'Show', @client, class:"btn btn-info" %></span>
+  </div>
+</div>

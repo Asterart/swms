@@ -1,0 +1,65 @@
+<li class="header-menu">
+  <span>Klienci</span>
+</li>
+<li class="sidebar-dropdown">
+  <a href="#">
+    <i class="fa fa-users"></i>
+    <span>Klienci</span>
+  </a>
+  <div class="sidebar-submenu">
+    <ul>
+      <li>
+        <%= link_to clients_path do %>
+          Wszyscy klienci
+        <% end %>
+      </li>
+      <li>
+        <%= link_to 'Dodaj klienta', new_client_path %>
+      </li>
+      <li>
+        <%= link_to 'Grupy', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Program lojalnościowy', '#' %>
+      </li>
+      <li>
+        <%= link_to '#' do %>
+          Zadłużenie
+          <span class="badge badge-pill badge-danger">5</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</li>
+<li class="sidebar-dropdown">
+  <a href="#">
+    <i class="fa fa-percent"></i>
+    <span>Rabaty</span>
+  </a>
+  <div class="sidebar-submenu">
+    <ul>
+      <li>
+        <%= link_to 'Rabaty', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Dodaj rabat', '#' %>
+      </li>
+    </ul>
+  </div>
+</li>
+<li class="sidebar-dropdown">
+  <a href="#">
+    <i class="fa fa-chart-line"></i>
+    <span>Raporty</span>
+  </a>
+  <div class="sidebar-submenu">
+    <ul>
+      <li>
+        <%= link_to 'Indywidualne', '#' %>
+      </li>
+      <li>
+        <%= link_to 'Grupowe', '#' %>
+      </li>
+    </ul>
+  </div>
+</li>

@@ -1,0 +1,19 @@
+<div class="row orders-list-sections">
+  <%= form_tag(orders_path, :method => 'get') do %>
+    <div class="col-md-1 orders-checkboxes">
+        <%= text_field_tag :payment, params[:payment], placeholder: "O Z F P" %>
+    </div>
+    <div class="col-md-1 orders-date">
+      <%= text_field_tag :date, params[:date], placeholder: "Data" %>
+    </div>
+    <div class="col-md-2 orders-delivery">
+      <%= text_field_tag :delivery, params[:delivery], placeholder: "Miejsce dostawy" %>
+    </div>
+    <div class="col-md-6 orders-products">
+      <%= text_field_tag :name, params[:name], placeholder: "Fragment nazwy towaru" %>
+    </div>
+    <div class="col-md-2 order-notes">
+      <%= submit_tag 'Szukaj' %>
+    </div>
+  <% end %>
+</div>

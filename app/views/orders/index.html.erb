@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+<div class="order-new">
+  <div class="order-title">
+    Lista wszystkich zamówień
+  </div>
+
+  <%= render 'orders/partials/orders_list_title', mode: "all" %>
+
+  <!-- table search fields for faster searching purposes -->
+  <%= render 'orders/partials/orders_list_search' %>
+
+  <% @orders.each do |order| %>
+    <div class="row border-bottom2 orders-list-sections">
+    <div class="col-md-1 orders-checkboxes">
+        <% if order.payment.to_s.include?('O') %>O<% else %>-<% end %>
+        <% if order.payment.to_s.include?('Z') %>Z<% else %>-<% end %>
+        <% if order.payment.to_s.include?('F') %>F<% else %>-<% end %>
+        <% if order.payment.to_s.include?('P') %>P<% else %>-<% end %>
+    </div>
+    <div class="col-md-1 orders-date"><%= order.created_at.strftime("%d-%m-%Y") %></div>
+    <div class="col-md-1 orders-client">
+      <% @current_client = Client.find(order.client_id) %>
+      <%= @current_client.client_name %>
+    </div>
+    <div class="col-md-1 orders-total"><%= order.total %></div>
+    <div class="col-md-2 orders-delivery"><%= order.delivery %></div>
+    <div class="col-md-4 orders-products">
+      <% @current_product = Product.find(order.product_id) %>
+        <span style="font-style: italic; font-weight:600;">Nazwa produktu: </span><%= @current_product.name %><br />
+      <% if @current_product.length != nil %>
+        <span style="font-style: italic; font-weight:600;">Długość: </span><%= @current_product.length %><br />
+      <% end %>
+      <% if @current_product.structure != "" %>
+        <span style="font-style: italic; font-weight:600;">Struktura: </span><%= @current_product.structure %><br />
+      <% end %>
+      <% if @current_product.color != "" %>
+        <span style="font-style: italic; font-weight:600;">Kolor: </span><%= @current_product.color %><br />
+      <% end %>
+      <% if order.quantity.present? %>
+        <span style="font-style: italic; font-weight:600;">Ilość: </span><%= order.quantity %>
+      <% end %>
+    </div>
+    <div class="col-md-2 orders-notes">
+      <%= order.notes %><br />
+      <% selling_user = User.find(order.user_id) %>
+      Dodający zamówienie: <br /><%= selling_user.name %>
+    </div>
+    </div>
+  <% end %>
+
+  <%# <%= render 'products/show_partials/header', mode_type: 'new', product: @product %>
+
+</div>

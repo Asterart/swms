@@ -1,0 +1,19 @@
+<% @clients.each do |client| %>
+  <div class="row clients-list-sections">
+    <div class="col clients-checkboxes"><%= check_box_tag 'client_id', client.id %></div>
+    <div class="col clients-number"></div>
+    <div class="col clients-names"><%= client.client_name %></div>
+    <div class="col clients-address">ul. <%= client.address_street %><br /><%= client.address_city %></div>
+    <div class="col clients-contact-details"><%= client.phone_number %></div>
+    <div class="col clients-company-name"><%= client.company_name %></div>
+    <div class="col clients-contact-details"><%= client.nip_number %></div>
+    <div class="col clients-actions">
+      <%= link_to '', new_order_path(:client => client ), class: "fa fa-shopping-cart", title: "Sprzedaż" %>
+      <%= link_to '', client, class: "fa fa-eye", title: "Podgląd" %>
+      <%= link_to '', edit_client_path(client), class: "fa fa-pencil-alt", title: "Edycja" %>
+      <% if current_user.admin? %>
+        <%= link_to '', client, class: "fa fa-trash-alt", method: :delete, data: { confirm: 'Czy na pewno usunąć?' }, title: "Usuń" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

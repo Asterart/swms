@@ -1,0 +1,15 @@
+<div class="sidebar-item sidebar-header d-flex flex-nowrap">
+  <div class="user-pic">
+    <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="Zdjęcie użytkownika">
+  </div>
+  <div class="user-info">
+    <span class="user-name"><%= current_user.name %></span>
+    <span class="user-role">
+      <% if current_user.admin? %>
+        Administrator
+      <% else %>
+        Obsługa hurtowni
+      <% end %>
+    </span>
+  </div>
+</div>

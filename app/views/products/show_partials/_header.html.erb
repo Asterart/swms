@@ -1,0 +1,52 @@
+<div class="product-title">
+  <% if mode_type == 'edit' %>
+    <%= product.name %>
+  <% else %>
+    <%= @product.name %>
+  <% end %>
+</div>
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-basic-info-tab" data-toggle="tab" href="#nav-basic-info" role="tab" aria-controls="nav-basic-info" aria-selected="true">Informacje podstawowe</a>
+    <a class="nav-item nav-link" id="nav-extra-info-tab" data-toggle="tab" href="#nav-extra-info" role="tab" aria-controls="nav-extra-info" aria-selected="false">Informacje dodatkowe</a>
+    <a class="nav-item nav-link" id="nav-action-tab" data-toggle="tab" href="#nav-action" role="tab" aria-controls="nav-action" aria-selected="false">Operacje</a>
+  </div>
+</nav>
+
+<% if mode_type == 'edit' || mode_type == 'new' %>
+  <%= form_with(model: product, local: true) do |form| %>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="tab-content product-tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-basic-info" role="tabpanel" aria-labelledby="nav-basic-info-tab">
+        <%= render 'products/edit_partials/basic', product: product, form: form %>
+      </div>
+      <div class="tab-pane fade" id="nav-extra-info" role="tabpanel" aria-labelledby="nav-extra-info-tab">
+        <%= render 'products/edit_partials/extra', product: product, form: form%>
+      </div>
+      <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">...</div>
+      <div class="actions text-center">
+        <span><%= form.submit 'Zapisz', class:"btn btn-primary" %></span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="tab-content product-tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-basic-info" role="tabpanel" aria-labelledby="nav-basic-info-tab">
+      <%= render 'products/show_partials/basic' %>
+    </div>
+    <div class="tab-pane fade" id="nav-extra-info" role="tabpanel" aria-labelledby="nav-extra-info-tab">
+      <%= render 'products/show_partials/extra' %>
+    </div>
+    <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">...</div>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="col-md-12 basic-info">
+  <div class="col-md-6" style="padding:0;">
+    <div class="client-show-content">
+      <div class="col-md-12 client-show-params">
+        <%= render 'clients/edit_partials/listing', name: "Imię i nazwisko", client_details: :client_name, fieldType: "string", form: form %>
+        <%= render 'clients/edit_partials/listing', name: "Telefon kontaktowy", client_details: :phone_number, fieldType: "string", form: form %>
+        <%= render 'clients/edit_partials/listing', name: "Adres email", client_details: :email, fieldType: "string", form: form  %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" style="border-left: 1px solid #e5e5e5;">
+    <div class="client-show-content">
+      <div class="col-md-12 client-show-params">
+        <%= render 'clients/edit_partials/listing', name: "Numer klienta", client_details: '#', fieldType: "text", form: form %>
+        <%= render 'clients/edit_partials/listing', name: "Uwagi, notatki o kliencie", client_details: :notes, fieldType: "text", form: form %>
+      </div>
+    </div>
+  </div>
+</div>

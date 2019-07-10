@@ -1,0 +1,120 @@
+// Place all the styles related to the clients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables.scss";
+
+.page-content{
+  background-color: $main-content-bg-color;
+  height: 100vh;
+  width: 100%;
+  min-width: 1200px;
+  padding-left: 250px;
+  overflow-y: hidden;
+  overflow-y: scroll;
+
+  .row{
+    border-bottom: 1px solid #fff;
+  }
+  .clients-title{
+    font-weight: 600;
+  }
+
+  .clients-icons-style{
+    a{
+      text-decoration: none;
+      color: $main-menu-products-icons-color;
+      &:hover{
+        color: $main-menu-products-icons-color-hover;
+      }
+    }
+  }
+
+  .clients-list-sections{
+    margin: 0 15px 0 15px!important;
+    padding: 15px 0 15px 0;
+    form{
+      display: contents;
+    }
+    .clients-checkboxes{
+      min-width: min-content;
+      max-width: 2%;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="client_id"]{
+        width: inherit;
+      }
+    }
+    .clients-number{
+      min-width: min-content;
+      max-width: 10%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="client_number"]{
+        width: inherit;
+      }
+    }
+    .clients-company-name{
+      min-width: min-content;
+      max-width: 20%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="company_name"]{
+        width: inherit;
+      }
+    }
+    .clients-names{
+      min-width: min-content;
+      max-width: 15%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="name"]{
+        width: inherit;
+      }
+    }
+    .clients-address{
+      min-width: min-content;
+      max-width: 10%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="address_city"],{
+        width: inherit;
+      }
+    }
+    .clients-contact-details{
+      min-width: min-content;
+      max-width: 10%;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="phone_number"]{
+        width: inherit;
+      }
+      input[name="nip_number"]{
+        width: inherit;
+      }
+    }
+    .clients-actions{
+      min-width: min-content;
+      padding: 0px 5px 0 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      a{
+        max-width: 50px;
+        padding-right: 10px;
+        text-decoration: none;
+        color: $main-menu-products-icons-color;
+        &:hover{
+          color: $main-menu-products-icons-color-hover;
+        }
+      }
+    }
+  }
+}

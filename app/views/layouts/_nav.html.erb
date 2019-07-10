@@ -1,0 +1,19 @@
+<nav class="expanded">
+  <%= link_to 'Magazyny', '#', class: "nav-item nav-link fab fa-simplybuilt" %>
+  <%= link_to 'Towary', products_url, class: "nav-item nav-link fa fa-cubes" %>
+  <%= link_to 'Sprzedaż', new_order_url, class: "nav-item nav-link fa fa-shopping-cart" %>
+  <%= link_to 'Klienci', clients_url, class: "nav-item nav-link fa fa-users" %>
+  <%= link_to 'Inwentaryzacja', '#', class: "nav-item nav-link fa fa-book" %>
+  <%= link_to 'CMR', '#', class: "nav-item nav-link fa fa-line-chart" %>
+  <%= link_to 'Szukaj', '#', class: "nav-item nav-link fa fa-search" %>
+</nav>
+
+<nav class="hidden">
+  <%= link_to '', '#', class: "nav-item nav-link fab fa-simplybuilt", title: "Magazyny" %>
+  <%= link_to '', products_url, class: "nav-item nav-link fa fa-cubes", title: "Towary" %>
+  <%= link_to '', new_order_url, class: "nav-item nav-link fa fa-shopping-cart", title: "Sprzedaż" %>
+  <%= link_to '', clients_url, class: "nav-item nav-link fa fa-users", title: "Klienci" %>
+  <%= link_to '', '#', class: "nav-item nav-link fa fa-book", title: "Inwentaryzacja" %>
+  <%= link_to '', '#', class: "nav-item nav-link fa fa-line-chart", title: "CMR" %>
+  <%= link_to '', '#', class: "nav-item nav-link fa fa-search", title: "Szukaj" %>
+</nav>

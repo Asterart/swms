@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <h4 class="modal-title" style="margin: 0 auto;" id="myModalLabel">Importuj produkty</h4>
+  <button type="button" name="button" class="close" style="position: absolute;" data-dismiss="modal">X</button>
+</div>
+<div class="modal-body text-center">
+  <%= form_tag import_path, multipart: true do %>
+    <%= file_field_tag :file, accept: '.csv' %>
+    <%= submit_tag "Importuj plik", class: "btn btn-primary", style: "margin: 0 auto;" %>
+  <% end %>
+</div>

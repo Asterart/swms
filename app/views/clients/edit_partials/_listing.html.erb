@@ -1,0 +1,16 @@
+<div class="col-md-12 client-show-params-params">
+  <div class="col-md-12 client-show-params-params-title" >
+    <%= name %>
+  </div>
+  <div class="col-md-12 client-show-params-params-value" style="padding-left: 15px;" >
+    <% if fieldType == 'string' %>
+      <%= form.text_field client_details, class: "form-field-style" %>
+    <% elsif fieldType == 'text' %>
+      <%= form.text_area client_details, class: "form-field-style" %>
+    <% elsif fieldType == 'float' %>
+      <%= form.number_field client_details, step: "0.01", class: "form-field-style" %>
+    <% elsif fieldType == 'integer' %>
+      <%= form.number_field client_details, class: "form-field-style" %>
+    <% end %>
+  </div>
+</div>

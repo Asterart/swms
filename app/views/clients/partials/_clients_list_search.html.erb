@@ -1,0 +1,26 @@
+<div class="row clients-list-sections">
+  <%= form_tag(clients_path, :method => 'get') do %>
+    <div class="col clients-checkboxes"></div>
+    <div class="col clients-number">
+      <%= text_field_tag 'client_number', '', placeholder: "Numer klienta" %>
+    </div>
+    <div class="col clients-names">
+      <%= text_field_tag :client_name, params[:client_name], placeholder: "Imię, nazwisko" %>
+    </div>
+    <div class="col clients-address">
+      <%= text_field_tag :address_city, params[:address_city], placeholder: "Adres" %>
+    </div>
+    <div class="col clients-contact-details">
+      <%= text_field_tag :phone_number, params[:phone_number], placeholder: "Telefon" %>
+    </div>
+    <div class="col clients-company-name">
+      <%= text_field_tag :company_name, params[:company_name], placeholder: "Nazwa salonu" %>
+    </div>
+    <div class="col clients-contact-details">
+      <%= text_field_tag :nip_number, params[:nip_number], placeholder: "NIP" %>
+    </div>
+    <div class="col clients-actions">
+      <%= submit_tag 'Szukaj' %>
+    </div>
+  <% end %>
+</div>

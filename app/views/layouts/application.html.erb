@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'layouts/shime' %>
+  </head>
+
+
+  <body>
+    <% if(user_signed_in?) -%>
+      <div class="page-wrapper chiller-theme toggled">
+        <%= render 'layouts/sidebar/sidebar' %>
+        <main class="page-content">
+          <!-- <div class="container-fluid"> -->
+            <%= yield %>
+          <!-- </div> -->
+        </main>
+      </div>
+    <% else %>
+      <div class="authentication">
+        <%= yield %>
+      </div>
+    <% end -%>
+  </body>
+</html>

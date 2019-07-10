@@ -1,0 +1,16 @@
+<div class="col-md-12 basic-info">
+  <div class="col-md-6" >
+    <div class="col-md-12 client-show-params">
+      <%= render 'clients/edit_partials/listing', name: "Ulica", client_details: :address_street, fieldType: "string", form: form %>
+      <%= render 'clients/edit_partials/listing', name: "Kod pocztowy", client_details: :address_citycode, fieldType: "string", form: form %>
+      <%= render 'clients/edit_partials/listing', name: "Miasto", client_details: :address_city, fieldType: "string", form: form %>
+      <%= render 'clients/edit_partials/listing', name: "Kraj", client_details: :address_country, fieldType: "string", form: form %>
+    </div>
+  </div>
+  <div class="col-md-6" >
+    <div class="col-md-12 client-show-params">
+      <%= render 'clients/edit_partials/listing', name: "Nazwa firmy", client_details: :company_name, fieldType: "string", form: form %>
+      <%= render 'clients/edit_partials/listing', name: "NIP firmy", client_details: :nip_number, fieldType: "string", form: form %>
+    </div>
+  </div>
+</div>

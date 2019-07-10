@@ -1,0 +1,160 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables.scss";
+
+.page-content{
+  background-color: $main-content-bg-color;
+  height: 100vh;
+  width: 100%;
+  min-width: 1200px;
+  padding-left: 250px;
+  overflow-y: hidden;
+  overflow-y: scroll;
+
+  .row{
+    // border-bottom: 1px solid #000;
+  }
+  .border-bottom2{
+    border-bottom: 1px solid #fff!important;
+  }
+
+  .border{
+    // border-right: 1px solid #000;
+  }
+  .orders-title{
+    font-weight: 600;
+  }
+
+  .orders-icons-style{
+    a{
+      text-decoration: none;
+      color: $main-menu-products-icons-color;
+      &:hover{
+        color: $main-menu-products-icons-color-hover;
+      }
+    }
+  }
+
+  .orders-list-sections{
+    margin: 0 15px 0 15px!important;
+    padding: 15px 0 15px 0;
+
+    form{
+      display: contents;
+    }
+
+    .orders-checkboxes{
+      // width: 15px;
+      // max-width: 15px;
+      padding: 0!important;
+      text-align: center;
+      display: flex;
+      margin-top: auto;
+      margin-bottom: auto;
+      min-width: min-content;
+      input[name="Z"]{
+        width: 15px;
+      }
+      input[name="F"]{
+        width: 15px;
+      }
+      input[name="FT"]{
+        width: 15px;
+      }
+      input[name="P"]{
+        width: 15px;
+      }
+      input[name="payment"]{
+        width: inherit;
+      }
+    }
+
+    .orders-date, .orders-client{
+      // min-width: 150px;
+      // max-width: 10%;
+      padding: 0px 5px 0 5px;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      min-width: min-content;
+      input[name="date"]{
+        width: inherit;
+      }
+      select[name="client_id"]{
+        width: inherit;
+      }
+    }
+
+    .orders-total{
+      // min-width: 150px;
+      // max-width: 10%;
+      padding: 0px 5px 0 5px;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      min-width: min-content;
+      input[name="total"]{
+        width: inherit;
+      }
+    }
+
+    .orders-delivery{
+      // min-width: 250px;
+      // max-width: 20%;
+      padding: 0px 5px 0 5px;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      min-width: min-content;
+      input[name="delivery"]{
+        width: inherit;
+      }
+    }
+
+    .orders-products{
+      // min-width: 250px;
+      //max-width: 25%;
+      min-width: min-content;
+      padding: 0px 5px 0 5px;
+      text-align: left;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="orders-products"]{
+        width: inherit;
+      }
+      input[name="name"]{
+        width: inherit;
+      }
+    }
+    .orders-notes{
+      // min-width: 150px;
+      min-width: min-content;
+      padding: 0px 5px 0 5px;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      input[name="notes"]{
+        width: inherit;
+      }
+    }
+    .orders-actions{
+      // max-width: 180px;
+      padding: 0px 5px 0 5px;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      min-width: min-content;
+      a{
+        max-width: 50px;
+        padding-right: 10px;
+        text-decoration: none;
+        color: $main-menu-products-icons-color;
+        &:hover{
+          color: $main-menu-products-icons-color-hover;
+        }
+      }
+    }
+  }
+}

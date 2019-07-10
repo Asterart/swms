@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<div class="order-new">
+  <div class="order-title">
+    Stwórz nowe zamówienie detaliczne
+  </div>
+
+  <%= render 'orders/partials/orders_list_title', mode: "new" %>
+  <%= form_for @order do |form| %>
+    <div class="row orders-list-sections orders-title">
+      <div class="col-md-1 border orders-checkboxes">
+        <div class="col-md-3">
+          <%= check_box_tag 'order[payment][]', "Z" %>
+        </div>
+        <div class="col-md-3">
+          <%= check_box_tag 'order[payment][]', "F" %>
+        </div>
+        <div class="col-md-3">
+          <%= check_box_tag 'order[payment][]', "O" %>
+        </div>
+        <div class="col-md-3">
+          <%= check_box_tag 'order[payment][]', "P" %>
+        </div>
+      </div>
+      <div class="col-md-2 border orders-client">
+        <%= @current_client.client_name %>
+        <%= form.hidden_field :client_id, value: @current_client.id %>
+      </div>
+      <div class="col-md-1 border orders-total">
+        <%= form.number_field :total, step: "0.01", style: "width: 100%;" %>
+      </div>
+      <div class="col-md-2 border orders-delivery">
+        <%= form.text_field :delivery %>
+      </div>
+      <div class="col-md-4 border orders-products">
+        <%= form.collection_select(:product_id, Product.all, :id, :content, include_blank: true ) %>
+        <div class="col-md-12">
+          Ilość <%= form.number_field :quantity, step: "1"%>
+        </div>
+      </div>
+      <div class="col-md-2 border orders-notes">
+        <%= form.text_field :notes %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+      </div>
+    </div>
+
+    <div class="actions text-center">
+      <span>
+        <%= form.submit 'Zapisz', class:"btn btn-primary" %>
+      </span>
+    </div>
+  <% end %>
+
+  <div class="footer">
+    <%= link_to 'Anuluj', products_path, class:"btn btn-success" %>
+  </div>
+</div>

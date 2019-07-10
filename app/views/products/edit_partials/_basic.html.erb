@@ -1,0 +1,36 @@
+<div class="col-md-12 basic-info">
+  <div class="col-md-8" style="padding:0;">
+    <div class="product-show-image">
+      <% if form.object.image? %>
+        <%= image_tag form.object.image.url, class: "product-show-image-size" %>
+        <%= form.label 'Usuń zdjęcie' %>
+        <%= form.check_box :remove_image %>
+      <% else %>
+        <%= form.file_field :image %>
+        <%= image_tag "default.jpg", class: "product-show-image-size" %>
+      <% end %>
+    </div>
+    <div class="product-show-content">
+      <span class="product-show-content-header">Nazwa produktu:</span>
+      <span class="product-show-content-content"><%= form.text_area :name, style: "width: 100%;" %></span>
+      <span class="product-show-content-header">Opis:</span>
+      <span class="product-show-content-content"><%= form.text_area :content, style: "width: 100%;" %></span>
+    </div>
+  </div>
+  <div class="col-md-4" style="border-left: 1px solid #e5e5e5;">
+    <div class="col-md-12 product-show-params">
+      <%= render 'products/edit_partials/listing', name: "Index", product_details: :product_index, fieldType: "string", form: form %>
+      <%= render 'products/edit_partials/listing', name: "Cena zakupu", product_details: :price_net_buy, fieldType: "float", form: form  %>
+      <%= render 'products/edit_partials/listing', name: "Cena sprzedaży", product_details: :price_net_sell, fieldType: "float", form: form %>
+      <%= render 'products/edit_partials/listing', name: "Dostępna ilość", product_details: :qty, fieldType: "integer", form: form %>
+      <div class="col-md-12 product-show-params-params">
+        <div class="col-md-12 product-show-params-params-title" >
+          Rodziaj produktu:
+        </div>
+        <div class="col-md-12 product-show-params-params-value" style="padding-left: 15px;" >
+          <%= form.select(:product_kind, Product.product_kinds.keys.map {|key| [key.humanize, key]}) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

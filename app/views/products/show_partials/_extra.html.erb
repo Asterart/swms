@@ -1,0 +1,11 @@
+<div class="col-md-12 basic-info">
+  <div class="col-md-4" >
+    <div class="col-md-12 product-show-params">
+      <%= render 'products/show_partials/listing', name: "Numer skupu", product_details: @product.buy_number %>
+      <%= render 'products/show_partials/listing', name: "Długość", product_details: @product.length %>
+      <%= render 'products/show_partials/listing', name: "Gramatura", product_details: @product.gramature %>
+      <%= render 'products/show_partials/listing', name: "Struktura", product_details: @product.structure %>
+      <%= render 'products/show_partials/listing', name: "Kolor", product_details: @product.color %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<% @missing_products.each do |product| %>
+  <div class="row products-list-sections">
+    <div class="col products-checkboxes"><%= check_box_tag 'product_id', product.id %></div>
+    <div class="col products-images">
+      <% if product.image.url != nil %>
+        <%= image_tag product.image.thumb.url, class: "products-images" %>
+      <% else %>
+        <%= image_tag "default.jpg", class: "products-images" %>
+      <% end %>
+    </div>
+    <div class="col products-names"><%= product.name %></div>
+    <div class="col products-descs">
+      <% if product.length != nil %>
+        <br />Długość: <%= product.length %> cm
+      <% end %>
+      <% if product.color != "" %>
+        <br />Kolor: <%= product.color %>
+      <% end %>
+    </div>
+    <div class="col products-qty"><%= product.qty %></div>
+    <div class="col products-actions">
+      <%= link_to '', product, class: "fa fa-eye", title: "Podgląd" %>
+      <%= link_to '', edit_product_path(product), class: "fa fa-pencil-alt", title: "Edycja" %>
+      <%= link_to '', product, class: "fa fa-trash-alt", method: :delete, data: { confirm: 'Czy na pewno usunąć?' }, title: "Usuń" %>
+    </div>
+  </div>
+<% end %>

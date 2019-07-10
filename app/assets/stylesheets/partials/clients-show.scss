@@ -1,0 +1,71 @@
+.page-content{
+  .client-show{
+    .client-title{
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    nav a{
+      color: #000!important;
+    }
+    .client-tab-content{
+      background-color: #fff;
+      .basic-info{
+        display: inline-flex;
+        padding: 0;
+      }
+    }
+
+    .client-show-image{
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e5e5e5;
+      .client-show-image-size{
+          width: 350px;
+          background-color: #fff;
+      }
+    }
+    .client-show-content{
+      display: grid;
+      .client-show-content-header{
+        padding: 12px;
+        font-size: 18px;
+        color: #818896;
+      }
+      .client-show-content-content{
+        margin: 5px;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #e5e5e5;
+      }
+    }
+    .client-show-params{
+      .client-show-params-params{
+        // display: flex;
+        padding: 12px;
+        .client-show-params-params-title{
+          padding: 12px 0 12px 0;
+          font-size: 18px;
+          color: #818896;
+        }
+        .client-show-params-params-value{
+          text-align: left;
+          padding: 12px 12px 12px 0;
+          font-size: 16px;
+          border: 1px solid #e5e5e5;
+          .form-field-style{
+            width: 100%;
+            text-align: left;
+          }
+        }
+      }
+    }
+    .footer{
+      margin-top: 5px;
+      a{
+        color: #fff;
+      }
+    }
+  }
+}

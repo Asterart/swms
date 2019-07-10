@@ -1,0 +1,19 @@
+<div class="col-md-12 basic-info">
+  <div class="col-md-6" style="padding:0;">
+    <div class="client-show-content">
+      <div class="col-md-12 client-show-params">
+        <%= render 'clients/show_partials/listing', name: "Imię i nazwisko", client_details: @client.client_name %>
+        <%= render 'clients/show_partials/listing', name: "Telefon kontaktowy", client_details: @client.phone_number %>
+        <%= render 'clients/show_partials/listing', name: "Adres email", client_details: @client.email  %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" style="border-left: 1px solid #e5e5e5;">
+    <div class="client-show-content">
+      <div class="col-md-12 client-show-params">
+        <%= render 'clients/show_partials/listing', name: "Numer klienta", client_details: '#' %>
+        <%= render 'clients/show_partials/listing', name: "Uwagi, notatki o kliencie", client_details: @client.notes %>
+      </div>
+    </div>
+  </div>
+</div>

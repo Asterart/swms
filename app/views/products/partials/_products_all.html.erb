@@ -1,0 +1,19 @@
+<% if @LowQtyProducts.size > 0 %>
+  <%= link_to " Brakuje #{@LowQtyProducts.size} produktów w magaznie", missing_products_path, class: "fa fa-exclamation", style: "color: #da0c1f", title: "Brakujące produkty" %>
+<% end %>
+<div class="col-12 text-center">
+  <h1>Wszystkie produkty</h1>
+</div>
+
+<!-- render icons like add new product, import products from file -->
+<!-- export products to file, clear seraching results -->
+<%= render 'products/partials/products_action_icons' %>
+
+<!-- table search fields for faster searching purposes -->
+<%= render 'products/partials/products_list_search' %>
+
+<!-- table titles for easier viewing purposes -->
+<%= render 'products/partials/products_list_title' %>
+
+
+<%= render 'products/partials/products_list' %>
