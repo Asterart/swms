@@ -7,37 +7,44 @@
   <%= render 'orders/partials/orders_list_title', mode: "new" %>
   <%= form_for @order do |form| %>
     <div class="row orders-list-sections orders-title">
-      <div class="col-md-1 border orders-checkboxes">
-        <div class="col-md-3">
-          <%= check_box_tag 'order[payment][]', "Z" %>
-        </div>
-        <div class="col-md-3">
-          <%= check_box_tag 'order[payment][]', "F" %>
-        </div>
-        <div class="col-md-3">
+      <div class="col-md-1 orders-checkboxes">
           <%= check_box_tag 'order[payment][]', "O" %>
-        </div>
-        <div class="col-md-3">
+          <%= check_box_tag 'order[payment][]', "Z" %>
+          <%= check_box_tag 'order[payment][]', "F" %>
           <%= check_box_tag 'order[payment][]', "P" %>
-        </div>
       </div>
-      <div class="col-md-2 border orders-client">
+      <div class="col-md-2 orders-client">
         <%= @current_client.client_name %>
         <%= form.hidden_field :client_id, value: @current_client.id %>
       </div>
-      <div class="col-md-1 border orders-total">
+      <div class="col-md-1 orders-total">
         <%= form.number_field :total, step: "0.01", style: "width: 100%;" %>
       </div>
-      <div class="col-md-2 border orders-delivery">
+      <div class="col-md-2 orders-delivery">
         <%= form.text_field :delivery %>
       </div>
-      <div class="col-md-4 border orders-products">
-        <%= form.collection_select(:product_id, Product.all, :id, :content, include_blank: true ) %>
-        <div class="col-md-12">
-          Ilość <%= form.number_field :quantity, step: "1"%>
+      <div class="col-md-4 orders-products">
+        <div style="display:flex">
+          <div class="col-md-8">Produkt:</div>
+          <div class="col-md-3">Ilość:</div>
+          <div class="col-md-1"></div>
         </div>
+        <%= form.fields_for :item do |i| %>
+          <div style="display:flex">
+            <%# <%= i.hidden_field %>  %>
+            <div class="col-md-8">
+              <%= i.collection_select(:product_id, Product.all, :id, :content, include_blank: true ) %>
+            </div>
+            <div class="col-md-3">
+              <%= i.number_field :ordered_product_quantity, step: "1" %>
+            </div>
+            <div class="col-md-1">
+              +
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="col-md-2 border orders-notes">
+      <div class="col-md-2 orders-notes">
         <%= form.text_field :notes %>
         <%= form.hidden_field :user_id, value: current_user.id %>
       </div>

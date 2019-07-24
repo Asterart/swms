@@ -60,14 +60,14 @@
       input[name="F"]{
         width: 15px;
       }
-      input[name="FT"]{
+      input[name="O"]{
         width: 15px;
       }
       input[name="P"]{
         width: 15px;
       }
       input[name="payment"]{
-        width: inherit;
+        width: min-content;
       }
     }
 
@@ -108,7 +108,7 @@
       margin-top: auto;
       margin-bottom: auto;
       min-width: min-content;
-      input[name="delivery"]{
+      input[name="order[delivery]"]{
         width: inherit;
       }
     }
@@ -124,6 +124,9 @@
       input[name="orders-products"]{
         width: inherit;
       }
+      #order_product_id, #order_quantity{
+        width: inherit;
+      }
       input[name="name"]{
         width: inherit;
       }
@@ -135,7 +138,7 @@
       text-align: center;
       margin-top: auto;
       margin-bottom: auto;
-      input[name="notes"]{
+      input[type="text"]{
         width: inherit;
       }
     }

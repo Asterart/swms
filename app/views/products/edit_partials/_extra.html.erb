@@ -1,7 +1,11 @@
 <div class="col-md-12 basic-info">
   <div class="col-md-4" >
     <div class="col-md-12 product-show-params">
-      <%= render 'products/edit_partials/listing', name: "Numer skupu", product_details: :buy_number, fieldType: "string", form: form %>
+      <% if product.buy_number.present? || current_user.admin? %>
+        <%= render 'products/edit_partials/listing', name: "Numer skupu", product_details: :buy_number, fieldType: "string", form: form %>
+      <% else %>
+        <%= render 'products/show_partials/listing', name: "Numer skupu", product_details: @product.buy_number %>
+      <% end %>
       <%= render 'products/edit_partials/listing', name: "Długość", product_details: :length, fieldType: "float", form: form %>
       <%= render 'products/edit_partials/listing', name: "Gramatura", product_details: :gramature, fieldType: "float", form: form %>
       <%= render 'products/edit_partials/listing', name: "Struktura", product_details: :structure, fieldType: "string", form: form %>

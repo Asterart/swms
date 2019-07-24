@@ -15,12 +15,12 @@
   <div class="col-md-6">
     <%# <%= client.orders.includes(:products).where(products: {id: 'product_id'}) %>
 
-    <%= pie_chart client.orders.group(:product_id).count, title: 'Stosunek zamawianych produktów' %>
+    <%# <%= pie_chart client.orders.group(:product_id).count, title: 'Stosunek zamawianych produktów' %> %>
   </div>
   <div class="col-md-6">
     <p>Legenda</p>
-    <% client.orders.uniq.pluck(:product_id).each do |order| %>
-     <%= Product.find(order).id %> - <%= Product.find(order).content %><br />
-    <% end %>
+    <%# <% client.orders.uniq.pluck(:product_id).each do |order| %> %>
+     <%# <%= Product.find(order).id  - <%= Product.find(order).content %><br /> %>
+    <%# <% end %> %>
   </div>
 </div>

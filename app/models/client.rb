@@ -1,8 +1,9 @@
 class Client < ApplicationRecord
 
-  validates :nip_number, uniqueness: true
-  has_many :orders, dependent: :destroy
-  has_many :products, through: :orders
+  # validates :nip_number, uniqueness: true
+  has_many :orders
+  has_many :items, through: :orders
+  has_many :products, through: :items
 
 
   # scope :id, -> (id) { where id: id }

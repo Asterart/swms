@@ -6,7 +6,8 @@ class Product < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
   # validates :product_index, uniqueness: true
-  has_many :orders
+  belongs_to :item
+  has_many :orders, through: :items
   has_many :clients, through: :orders
 
 

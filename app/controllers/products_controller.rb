@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     @products = @products.content(params[:content]) if params[:content].present?
     @products = @products.range_min(params[:range_min]) if params[:range_min].present?
     @products = @products.range_max(params[:range_max]) if params[:range_max].present?
+
+    # respond_to do |format|
+    #   format.html
+    #   format.csv { send_data @products.to_csv, filename: "products-#{Date.today}.csv" }
+    # end
   end
 
   # GET /products/1
@@ -58,6 +63,7 @@ class ProductsController < ApplicationController
     data_export = Product.all.to_json
     send_data data_export, type: 'application/json; header=present', disposition: 'attachment; filename=products.json'
     # redirect_to products_url
+
   end
 
   def import_csv
