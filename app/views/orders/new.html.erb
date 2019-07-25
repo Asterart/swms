@@ -31,7 +31,7 @@
         </div>
         <%= form.fields_for :items do |i| %>
           <div style="display:flex">
-            <%# <%= i.hidden_field %>  %>
+            <%# <%= i.hidden_field %>
             <div class="col-md-8">
               <%= i.collection_select(:product_id, Product.all, :id, :content, include_blank: true ) %>
             </div>

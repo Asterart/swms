@@ -47,11 +47,11 @@ class ClientsController < ApplicationController
 
   def destroy
 
-    @client.orders.each do |order|
-      product = Product.find(order.product_id)
-      stack_size = product.qty + order.quantity
-      product.update(qty: stack_size)
-    end
+    # @client.orders.each do |order|
+    #   product = Product.find(order.product_id)
+    #   stack_size = product.qty + order.quantity
+    #   Product.update(qty: stack_size)
+    # end
 
     @client.destroy
     respond_to do |format|

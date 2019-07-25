@@ -19,22 +19,16 @@ class OrdersController < ApplicationController
     client = Client.find(params[:order][:client_id])
     @order = client.orders.build(order_params)
 
-
-    # stack_size = product.qty - @order.quantity
-
     respond_to do |format|
       if @order.save
-        @order.items.create
-        # @order.items.build([{product_id: params[:product_id], ordered_product_quantity: params[:ordered_product_quantity]}])
-        # @order = client.orders.last.items
-        # @order.items.update([{product_id: params[:product_id], ordered_product_quantity: params[:ordered_product_quantity]}])
-        # @order.items.build([{product_id: params[:product_id], ordered_product_quantity: params[:ordered_product_quantity]}])
-        # product.update(qty: stack_size)
-        # p @order.items
+        @order.items.each do |item|
+          product = Product.find(item.product_id)
+          stack_size = product.qty - item.ordered_product_quantity
+          product.update_attributes(qty: stack_size)
+        end
         format.html { redirect_to client, notice: 'Zamówienie zostało dodane.' }
       else
         p @order.errors
-        # p Product.find((params[:order][:items_attributes]['0'][:product_id]))
         format.html { redirect_to clients_url, notice: 'Zamówienie zostało odrzucone.' }
       end
     end
@@ -43,9 +37,11 @@ class OrdersController < ApplicationController
   def destroy
     @orders = Order.all
     @order = @orders.find(params[:id])
-    # product = Product.find(@order.product_id)
-    # stack_size = product.qty + @order.quantity
-    # product.update(qty: stack_size)
+    @order.items.each do |item|
+      product = Product.find(item.product_id)
+      stack_size = product.qty + item.ordered_product_quantity
+      product.update_attributes(qty: stack_size)
+    end
 
     @order.destroy
     respond_to do |format|
