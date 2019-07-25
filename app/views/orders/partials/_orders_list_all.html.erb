@@ -11,8 +11,7 @@
   <div class="col-md-2 orders-delivery"><%= order.delivery %></div>
   <div class="col-md-4 orders-products">
     <% order.items.each do |o| %>
-    <%= o.product_id %>
-      <% current_product = Product.find(68) %>
+      <% current_product = Product.find(o.product_id) %>
       <span style="font-style: italic; font-weight:600;">Nazwa produktu: </span><%= current_product.name %><br />
       <% if current_product.product_kind == "włosy" %>
         <% if current_product.length != nil %>
@@ -26,9 +25,6 @@
         <% end %>
       <% else %>
         <span style="font-style: italic; font-weight:600;">Opis: </span><%= current_product.content %><br />
-      <% end %>
-      <% if order.quantity.present? %>
-        <span style="font-style: italic; font-weight:600;">Ilość: </span><%= order.quantity %>
       <% end %>
     <% end %>
   </div>
