@@ -24,3 +24,19 @@
 //= require custom
 //= require chartkick
 //= require Chart.bundle
+
+$(document).on('turbolinks:load', function(){
+  $('form').on('click', '-', function(event){
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('div').hide();
+    return event.preventDefault();
+  });
+
+  $('form').on('click', '+', function(event){
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $('.fields').append($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  });
+});

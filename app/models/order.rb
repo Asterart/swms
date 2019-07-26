@@ -14,6 +14,6 @@ class Order < ApplicationRecord
   validates :user_id, presence:true
   # validates :product_id, presence:true
 
-  accepts_nested_attributes_for :items, allow_destroy: true #, reject_if: proc { |att| att['product_id'].blank? }
+  accepts_nested_attributes_for :items, allow_destroy: true, reject_if: proc { |att| att['product_id'].blank? }
   # accepts_nested_attributes_for :products, allow_destroy: true, reject_if: proc { |att| att['name'].blank? }
 end

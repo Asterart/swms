@@ -31,15 +31,15 @@
         </div>
         <%= form.fields_for :items do |i| %>
           <div style="display:flex">
-            <%# <%= i.hidden_field %>
             <div class="col-md-8">
-              <%= i.collection_select(:product_id, Product.all, :id, :content, include_blank: true ) %>
+              <%= i.collection_select(:product_id, Product.all, :id, :content, {include_blank: true}, {class: "order-items-attributes"} ) %>
             </div>
             <div class="col-md-3">
-              <%= i.number_field :ordered_product_quantity, step: "1" %>
+              <%= i.number_field :ordered_product_quantity, step: "1", class: "order-items-attributes" %>
             </div>
             <div class="col-md-1">
-              +
+              <%= i.hidden_field :_destroy, as: :hidden %>
+              
             </div>
           </div>
         <% end %>
@@ -53,6 +53,7 @@
     <div class="actions text-center">
       <span>
         <%= form.submit 'Zapisz', class:"btn btn-primary" %>
+        <%# <%= link_to_add_row('+', form, :items, class: 'btn btn-primary') %>
       </span>
     </div>
   <% end %>

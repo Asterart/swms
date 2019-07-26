@@ -55,19 +55,19 @@
       margin-bottom: auto;
       min-width: min-content;
       input[name="Z"]{
-        width: 15px;
+        // width: 15px;
       }
       input[name="F"]{
-        width: 15px;
+        // width: 15px;
       }
       input[name="O"]{
-        width: 15px;
+        // width: 15px;
       }
       input[name="P"]{
-        width: 15px;
+      //  width: 15px;
       }
       input[name="payment"]{
-        width: min-content;
+        width: inherit;
       }
     }
 
@@ -124,7 +124,7 @@
       input[name="orders-products"]{
         width: inherit;
       }
-      #order_product_id, #order_quantity{
+      .order-items-attributes{
         width: inherit;
       }
       input[name="name"]{

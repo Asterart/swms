@@ -7,7 +7,7 @@
   <%= render 'orders/partials/orders_list_title', mode: "all" %>
 
   <!-- table search fields for faster searching purposes -->
-  <%= render 'orders/partials/orders_list_search' %>
+  <%# <%= render 'orders/partials/orders_list_search' %>
 
   <% @orders.each do |order| %>
     <div class="row border-bottom2 orders-list-sections">
@@ -25,31 +25,33 @@
     <div class="col-md-1 orders-total"><%= order.total %></div>
     <div class="col-md-2 orders-delivery"><%= order.delivery %></div>
     <div class="col-md-4 orders-products">
-      <% order.items.each do |o| %>
-        <% current_product = Product.find(o.product_id) %>
-        <span style="font-style: italic; font-weight:600;">Nazwa produktu: </span><%= current_product.name %><br />
-        <% if current_product.product_kind == "włosy" %>
-          <% if current_product.length != nil %>
-            <span style="font-style: italic; font-weight:600;">Długość: </span><%= current_product.length %><br />
+      <% if order.items.length > 0 %>
+        <% order.items.each do |o| %>
+          <% current_product = Product.find(o.product_id) %>
+          <span style="font-style: italic; font-weight:600;">Nazwa produktu: </span><%= current_product.name %><br />
+          <% if current_product.product_kind == "włosy" %>
+            <% if current_product.length != nil %>
+              <span style="font-style: italic; font-weight:600;">Długość: </span><%= current_product.length %><br />
+            <% end %>
+            <% if current_product.structure != "" %>
+              <span style="font-style: italic; font-weight:600;">Struktura: </span><%= current_product.structure %><br />
+            <% end %>
+            <% if current_product.color != "" %>
+              <span style="font-style: italic; font-weight:600;">Kolor: </span><%= current_product.color %><br />
+            <% end %>
+          <% else %>
+            <span style="font-style: italic; font-weight:600;">Opis: </span><%= current_product.content %><br />
           <% end %>
-          <% if current_product.structure != "" %>
-            <span style="font-style: italic; font-weight:600;">Struktura: </span><%= current_product.structure %><br />
-          <% end %>
-          <% if current_product.color != "" %>
-            <span style="font-style: italic; font-weight:600;">Kolor: </span><%= current_product.color %><br />
-          <% end %>
-        <% else %>
-          <span style="font-style: italic; font-weight:600;">Opis: </span><%= current_product.content %><br />
+          <span style="font-style: italic; font-weight:600;">Ilość: </span><%= o.ordered_product_quantity %>
         <% end %>
-        <span style="font-style: italic; font-weight:600;">Ilość: </span><%= o.ordered_product_quantity %>
+      </div>
+      <div class="col-md-2 orders-notes">
+        <%= order.notes %><br />
+        <% selling_user = User.find(order.user_id) %>
+        Dodający zamówienie: <br /><%= selling_user.name %>
+      </div>
+      </div>
       <% end %>
-    </div>
-    <div class="col-md-2 orders-notes">
-      <%= order.notes %><br />
-      <% selling_user = User.find(order.user_id) %>
-      Dodający zamówienie: <br /><%= selling_user.name %>
-    </div>
-    </div>
   <% end %>
 
   <%# <%= render 'products/show_partials/header', mode_type: 'new', product: @product %>

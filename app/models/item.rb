@@ -3,5 +3,5 @@ class Item < ApplicationRecord
   belongs_to :order, inverse_of: :items, optional: true
 
 
-  accepts_nested_attributes_for :products, allow_destroy: true#, reject_if: proc { |att| att['product_id'].blank? }
+  accepts_nested_attributes_for :products, allow_destroy: true, reject_if: proc { |attr| attr["ordered_product_quantity"].blank? }
 end

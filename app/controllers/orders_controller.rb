@@ -8,7 +8,9 @@ class OrdersController < ApplicationController
   def new
     @clients = Client.all
     @order = Order.new
-    @order.items.new
+    5.times do
+      @order.items.new
+    end
   end
 
   def choose_client_for_order
