@@ -14,7 +14,12 @@
           <%= check_box_tag 'order[payment][]', "P" %>
       </div>
       <div class="col-md-2 orders-client">
-        <%= @current_client.client_name %>
+        <% if @current_client.client_name.present? %>
+          <%= @current_client.client_name %><br /><br />
+        <% end %>
+        <% if @current_client.company_name.present? %>
+          <%= @current_client.company_name %><br />
+        <% end %>
         <%= form.hidden_field :client_id, value: @current_client.id %>
       </div>
       <div class="col-md-1 orders-total">
@@ -32,14 +37,14 @@
         <%= form.fields_for :items do |i| %>
           <div style="display:flex">
             <div class="col-md-8">
-              <%= i.collection_select(:product_id, Product.all, :id, :content, {include_blank: true}, {class: "order-items-attributes"} ) %>
+              <%= i.collection_select(:product_id, Product.all.order('content ASC'), :id, :content, {include_blank: true}, {class: "order-items-attributes"} ) %>
             </div>
             <div class="col-md-3">
               <%= i.number_field :ordered_product_quantity, step: "1", class: "order-items-attributes" %>
             </div>
             <div class="col-md-1">
               <%= i.hidden_field :_destroy, as: :hidden %>
-              
+
             </div>
           </div>
         <% end %>

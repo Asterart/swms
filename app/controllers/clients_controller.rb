@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.where(nil).paginate(:page => params[:page], :per_page => 25)
+    @clients = Client.where(nil).order(client_name: :asc).paginate(:page => params[:page], :per_page => 25)
     # @clients = @clients.id(params[:id]) if params[:id].present?
     @clients = @clients.client_name(params[:client_name]) if params[:client_name].present?
     @clients = @clients.address_city(params[:address_city]) if params[:address_city].present?

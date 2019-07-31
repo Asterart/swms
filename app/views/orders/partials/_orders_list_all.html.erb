@@ -1,5 +1,6 @@
+<% number = 0 %>
 <% @client.orders.each do |order| %>
-  <div class="row border-bottom2 orders-list-sections">
+  <div class="row border-bottom2 orders-list-sections background-<%=(number = number + 1)%2 %>" >
   <div class="col-md-1 orders-checkboxes">
     <% if order.payment.to_s.include?('O') %>O<% else %>-<% end %>
     <% if order.payment.to_s.include?('Z') %>Z<% else %>-<% end %>
@@ -24,16 +25,17 @@
           <span style="font-style: italic; font-weight:600;">Kolor: </span><%= current_product.color %><br />
         <% end %>
         <% if current_product.product_index != "" %>
-          <span style="font-style: italic; font-weight:600;">Index: </span><%= current_product.products_index %><br />
+          <span style="font-style: italic; font-weight:600;">Index: </span><%= current_product.product_index %><br />
         <% end %>
       <% else %>
         <span style="font-style: italic; font-weight:600;">Opis: </span><%= current_product.content %><br />
       <% end %>
-      <span style="font-style: italic; font-weight:600;">Ilość: </span><%= o.ordered_product_quantity %><br />
+      <span style="font-style: italic; font-weight:600;">Ilość: </span><%= o.ordered_product_quantity %><br /><br />
     <% end %>
   </div>
   <div class="col-md-2 orders-notes">
     <%= order.notes %><br />
+    <p></p>
     <% selling_user = User.find(order.user_id) %>
     Utworzone przez:<br /><%= selling_user.name %>
   </div>

@@ -10,12 +10,13 @@
 
 <div class="row">
   <div class="col-md-12">
-    <!-- <p>Stosunek zamawianych produktów: </p> -->
+    <p>Stosunek zamawianych produktów: </p>
   </div>
   <div class="col-md-6">
-    <%# <%= client.orders.includes(:products).where(products: {id: 'product_id'}) %>
+    <%# include(:products).where(products: {id: 'product_id'}) %>
+    <%= client.orders.includes(:items) %>
 
-    <%# <%= pie_chart client.orders.group(:product_id).count, title: 'Stosunek zamawianych produktów' %> %>
+    <%= pie_chart client.orders.group(:product_id).count, title: 'Stosunek zamawianych produktów' %>
   </div>
   <div class="col-md-6">
     <p>Legenda</p>

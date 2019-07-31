@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     # @products = Product.all
-    @products = Product.where(nil).order(id: :asc).paginate(:page => params[:page], :per_page => 25)
+    @products = Product.where(nil).order(content: :asc).paginate(:page => params[:page], :per_page => 25)
     @products = @products.id(params[:id]) if params[:id].present?
     # @products = @products.name_id(params[:name]) if params[:name].present?
     @products = @products.content(params[:content]) if params[:content].present?

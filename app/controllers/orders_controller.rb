@@ -2,19 +2,19 @@ class OrdersController < ApplicationController
   before_action :current_client, only: [:new]
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
     @clients = Client.all
     @order = Order.new
-    5.times do
+    10.times do
       @order.items.new
     end
   end
 
   def choose_client_for_order
-    @clients = Client.all
+    @clients = Client.all.order(client_name: :asc).paginate(:page => params[:page], :per_page => 25)
   end
 
   def create
@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
         end
         format.html { redirect_to client, notice: 'Zamówienie zostało dodane.' }
       else
-        p @order.errors
         format.html { redirect_to clients_url, notice: 'Zamówienie zostało odrzucone.' }
       end
     end

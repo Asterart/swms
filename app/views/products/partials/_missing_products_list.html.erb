@@ -10,11 +10,14 @@
     </div>
     <div class="col products-names"><%= product.name %></div>
     <div class="col products-descs">
-      <% if product.length != nil %>
+      <% if product.product_kind == "włosy" %>
         <br />Długość: <%= product.length %> cm
-      <% end %>
-      <% if product.color != "" %>
         <br />Kolor: <%= product.color %>
+        <br />Gramatura: <%= product.gramature %> g
+        <br />Struktura: <%= product.structure %>
+        <br />Index: <%= product.product_index %>
+      <% else %>
+        <%= product.content %>
       <% end %>
     </div>
     <div class="col products-qty"><%= product.qty %></div>
@@ -25,3 +28,5 @@
     </div>
   </div>
 <% end %>
+
+<%= will_paginate @missing_products %>

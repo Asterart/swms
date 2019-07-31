@@ -17,6 +17,6 @@
     </div>
   </div>
 <% end %>
-<% if @clients.empty? %>
+<% if @clients.count > 0 %>
   <%= will_paginate @clients %>
 <% end %>
