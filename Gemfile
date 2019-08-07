@@ -6,7 +6,7 @@ ruby '2.6.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use bootstrap to build basic UI
-gem 'bootstrap', '>= 4.0.0'
+gem 'bootstrap', '>= 4.3.1'
 # datepicker
 gem 'bootstrap-datepicker-rails'
 # Image uploading section
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # gemt for the easiest way to show thumbs
-gem 'mini_magick', '>= 4.3'
+gem 'mini_magick', '>= 4.9.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
