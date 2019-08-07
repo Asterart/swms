@@ -1,15 +1,15 @@
 <div class="client-title">
-  <% if mode_type == 'new' || mode_type == 'edit' %>
-    <% if client.client_name.present? %>
-      <%= client.company_name %>
-    <% else %>
-      <%= client.client_name %>
-    <% end %>
+  <% if mode_type == 'new' %>
+    Nowy klienta
   <% else %>
-    <% if @client.client_name.empty? %>
-      <%= @client.company_name %>
-    <% else %>
+    <% if @client.client_name.present? %>
       <%= @client.client_name %>
+      <% if @client.company_name.present? %>
+        - <%= @client.company_name %>
+      <% end %>
+    <% end %>
+    <% if @client.client_name.blank? %>
+      <%= @client.company_name %>
     <% end %>
   <% end %>
 </div>
@@ -18,9 +18,11 @@
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-basic-info-tab" data-toggle="tab" href="#nav-basic-info" role="tab" aria-controls="nav-basic-info" aria-selected="true">Dane osobowe</a>
     <a class="nav-item nav-link" id="nav-extra-info-tab" data-toggle="tab" href="#nav-extra-info" role="tab" aria-controls="nav-extra-info" aria-selected="false">Dane kontaktowe</a>
-    <a class="nav-item nav-link" id="nav-orders-tab" data-toggle="tab" href="#nav-orders" role="tab" aria-controls="nav-orders" aria-selected="false">Historia zamówień</a>
-    <a class="nav-item nav-link" id="nav-stats-tab" data-toggle="tab" href="#nav-stats" role="tab" aria-controls="nav-stats" aria-selected="false">Statystyki</a>
-    <%= link_to 'Zrób sprzedaż', new_order_path(:client => @client ), class: "nav-item nav-link" %>
+    <% if mode_type == 'show' %>
+      <a class="nav-item nav-link" id="nav-orders-tab" data-toggle="tab" href="#nav-orders" role="tab" aria-controls="nav-orders" aria-selected="false">Historia zamówień</a>
+      <a class="nav-item nav-link" id="nav-stats-tab" data-toggle="tab" href="#nav-stats" role="tab" aria-controls="nav-stats" aria-selected="false">Statystyki</a>
+      <%= link_to 'Zrób sprzedaż/zwrot', new_order_path(:client => @client ), class: "nav-item nav-link btn btn-success", style: "color:#fff!important; margin-left:auto;" %>
+    <% end %>
   </div>
 </nav>
 

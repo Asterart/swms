@@ -1,7 +1,7 @@
 <div class="col-md-12 basic-info">
   <div class="col-md-4" >
     <div class="col-md-12 product-show-params">
-      <% if product.buy_number.present? || current_user.admin? %>
+      <% if current_user.admin? || mode_type == 'new' %>
         <%= render 'products/edit_partials/listing', name: "Numer skupu", product_details: :buy_number, fieldType: "string", form: form %>
       <% else %>
         <%= render 'products/show_partials/listing', name: "Numer skupu", product_details: @product.buy_number %>

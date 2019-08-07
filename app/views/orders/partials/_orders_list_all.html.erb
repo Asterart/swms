@@ -1,5 +1,5 @@
 <% number = 0 %>
-<% @client.orders.each do |order| %>
+<% @client.orders.order(created_at: :desc).each do |order| %>
   <div class="row border-bottom2 orders-list-sections background-<%=(number = number + 1)%2 %>" >
   <div class="col-md-1 orders-checkboxes">
     <% if order.payment.to_s.include?('O') %>O<% else %>-<% end %>

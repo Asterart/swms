@@ -1,27 +1,24 @@
-<% totalOrderSum = 0 %>
-<% client.orders.each do |order| %>
-  <% totalOrderSum += order.total %>
-<% end %>
+<% totalStats(client) %>
+<p>Łączna wartość zamówień od początku:
+   <%= @totalOrderSum %> zł
+</p>
+<p>Średnia wartość zamówienia:
+  <%= @avg %> zł
+</p>
 
-<p>Łączna wartość zamówień od początku: <%= totalOrderSum %> zł</p>
-<p>Średnia wartość zamówienia: <% if client.orders.size > 0 %> <%= totalOrderSum/client.orders.size %> zł <% end %></p>
 <%= column_chart client.orders.group_by_month(:created_at, last: 12, format: '%b %Y').count, title: 'Ilość zamówień', discrete: false %>
 
-
+<p>
+</p>
 <div class="row">
-  <div class="col-md-12">
-    <p>Stosunek zamawianych produktów: </p>
-  </div>
   <div class="col-md-6">
-    <%# include(:products).where(products: {id: 'product_id'}) %>
-    <%= client.orders.includes(:items) %>
-
-    <%= pie_chart client.orders.group(:product_id).count, title: 'Stosunek zamawianych produktów' %>
+    <% client.orders.includes(:items) %>
+    <%= pie_chart client.items.group(:product_id).count, title: 'Stosunek zamawianych produktów' %>
   </div>
   <div class="col-md-6">
     <p>Legenda</p>
-    <%# <% client.orders.uniq.pluck(:product_id).each do |order| %> %>
-     <%# <%= Product.find(order).id  - <%= Product.find(order).content %><br /> %>
-    <%# <% end %> %>
+    <% client.items.uniq.pluck(:product_id).each do |order| %>
+     <%= Product.find(order).id %> - <%= Product.find(order).content %><br />
+    <% end %>
   </div>
 </div>

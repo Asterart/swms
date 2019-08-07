@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  helper ClientsHelper
 
   def index
     @clients = Client.where(nil).order(client_name: :asc).paginate(:page => params[:page], :per_page => 25)
@@ -61,6 +62,7 @@ class ClientsController < ApplicationController
       format.html { redirect_to clients_url, notice: 'Klient został usunięty z bazy.' }
     end
   end
+
 
   private
     def set_client

@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :current_client, only: [:new]
+  before_action :products, only: [:new]
 
   def index
     @orders = Order.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
@@ -49,6 +50,10 @@ class OrdersController < ApplicationController
       # format.html { redirect_back(fallback_location:"/"), notice: 'Zamówienie zostało usunięty z bazy.' }
       format.html { redirect_back(fallback_location:"/") }
     end
+  end
+
+  def products
+    @products ||= Product.all.order('content ASC')
   end
 
   private
