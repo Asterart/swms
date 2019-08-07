@@ -6,7 +6,7 @@ ruby '2.6.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use bootstrap to build basic UI
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '>= 4.0.0'
 # datepicker
 gem 'bootstrap-datepicker-rails'
 # Image uploading section
@@ -16,7 +16,7 @@ gem "chartkick"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Use Devise for auth users
-gem 'devise'
+gem 'devise', '>= 4.6.0'
 gem 'groupdate'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # gemt for the easiest way to show thumbs
-gem 'mini_magick', '~> 4.3'
+gem 'mini_magick', '>= 4.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -41,7 +41,7 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 # Allow for paginations
 gem 'will_paginate', '~> 3.1.1'
-gem 'will_paginate-bootstrap' 
+gem 'will_paginate-bootstrap'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 # Use Redis adapter to run Action Cable in production
