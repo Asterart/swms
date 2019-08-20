@@ -20,16 +20,39 @@ module ClientsHelper
       @arg = 0
     end
 
+    @spendThisMonth = 0
+    client.orders.each do |order|
+      if order.created_at.strftime("%m") == Date.today.strftime("%m")
+        @spendThisMonth += order.total
+      end
+    end
+
   end
 
 
   def orderedProducts(client)
-    @products = []
+    products = []
     client.orders.each do |order|
-      order.items.each do |item|
-        @products << item
+      order.items.uniq.each do |item|
+        products << item.product_id
       end
     end
+    @orderedProductsAll = products
+  end
+
+  def dailyIncome(what_day)
+    @earnedToday = 0
+    @lostToday = 0
+    Order.all.each do |order|
+      if order.created_at.strftime("%d %m") == what_day
+        if order.total > 0
+          @earnedToday += order.total
+        else
+          @lostToday += order.total
+        end
+      end
+    end
+
   end
 
 end

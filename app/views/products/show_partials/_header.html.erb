@@ -33,7 +33,7 @@
       <div class="tab-pane fade" id="nav-extra-info" role="tabpanel" aria-labelledby="nav-extra-info-tab">
         <%= render 'products/edit_partials/extra', product: product, form: form, mode_type: mode_type %>
       </div>
-      <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">...</div>
+      <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab"><% sold(product.id) %> <%= @totalOrdered %></div>
       <div class="actions text-center">
         <span><%= form.submit 'Zapisz', class:"btn btn-primary" %></span>
       </div>
@@ -47,6 +47,12 @@
     <div class="tab-pane fade" id="nav-extra-info" role="tabpanel" aria-labelledby="nav-extra-info-tab">
       <%= render 'products/show_partials/extra' %>
     </div>
-    <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">...</div>
+    <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">
+      <% sold(@product.id) %>
+      Sprzedano <%= @totalOrdered.size %> razy w ilości : <br />
+      <% @totalOrdered.ids.each do |order| %>
+        Kto zamawiał: <%= Client.find(Order.find(order).client_id).client_name %> - <%= Client.find(Order.find(order).client_id).company_name %> <br />
+      <% end %>
+    </div>
   </div>
 <% end %>

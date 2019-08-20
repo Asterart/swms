@@ -1,5 +1,80 @@
 <p id="notice"><%= notice %></p>
 <div class="order-new">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-sm-2">
+        Data
+      </div>
+      <div class="col-sm-2">
+        <%= 4.days.ago.strftime("%d %m") %>
+      </div>
+      <div class="col-sm-2">
+        <%= 3.days.ago.strftime("%d %m") %>
+      </div>
+      <div class="col-sm-2">
+        <%= 2.days.ago.strftime("%d %m") %>
+      </div>
+      <div class="col-sm-2">
+        <%= Date.yesterday.strftime("%d %m") %>
+      </div>
+      <div class="col-sm-2" style="color:#228B22;">
+        <b><%= Date.today.strftime("%d %m") %></b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        Utarg
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(4.days.ago.strftime("%d %m")) %>
+        <%= @earnedToday %> zł
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(3.days.ago.strftime("%d %m")) %>
+        <%= @earnedToday %> zł
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(2.days.ago.strftime("%d %m")) %>
+        <%= @earnedToday %> zł
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(Date.yesterday.strftime("%d %m")) %>
+        <%= @earnedToday %> zł
+      </div>
+      <div class="col-sm-2" style="color:#228B22;">
+        <% dailyIncome(Date.today.strftime("%d %m")) %>
+        <b><%= @earnedToday %> zł</b>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        Straty/Zwroty
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(4.days.ago.strftime("%d %m")) %>
+        <%= @lostToday %> zł
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(3.days.ago.strftime("%d %m")) %>
+        <%= @lostToday %> zł
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(2.days.ago.strftime("%d %m")) %>
+        <%= @lostToday %> zł
+      </div>
+      <div class="col-sm-2">
+        <% dailyIncome(Date.yesterday.strftime("%d %m")) %>
+        <%= @lostToday %> zł
+      </div>
+      <div class="col-sm-2" style="color:#228B22;">
+        <% dailyIncome(Date.today.strftime("%d %m")) %>
+        <b><%= @lostToday %> zł</b>
+      </div>
+    </div>
+  </div>
+
+  <%= column_chart Order.where('total > ?', 0).group_by_day(:created_at, time_zone: "Warsaw", last: 5).count, title: 'Ilość zamówień z ostatnich 5 dni' %>
+  <%= column_chart Order.where('total < ?', 0).group_by_day(:created_at, time_zone: "Warsaw", last: 5).count, title: 'Ilość zwrotów z ostatnich 5 dni' %>
   <div class="order-title">
     Lista wszystkich zamówień
   </div>
@@ -21,10 +96,10 @@
     <div class="col-md-1 orders-client">
       <% @current_client = Client.find(order.client_id) %>
       <% if @current_client.client_name.present? %>
-        <%= @current_client.client_name %><br /><br />
+        <%= @current_client.client_name %>
       <% end %>
-      <% if @current_client.company_name.present? %>
-        <%= @current_client.company_name %><br />
+      <% if @current_client.company_name.present? && @current_client.client_name.blank? %>
+        <%= @current_client.company_name %>
       <% end %>
     </div>
     <div class="col-md-1 orders-total"><%= order.total %></div>

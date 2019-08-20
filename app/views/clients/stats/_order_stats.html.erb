@@ -5,6 +5,9 @@
 <p>Średnia wartość zamówienia:
   <%= @avg %> zł
 </p>
+<p>Wydano w tym miesiącu:
+  <%= @spendThisMonth %> zł
+</p>
 
 <%= column_chart client.orders.group_by_month(:created_at, last: 12, format: '%b %Y').count, title: 'Ilość zamówień', discrete: false %>
 
@@ -17,8 +20,16 @@
   </div>
   <div class="col-md-6">
     <p>Legenda</p>
-    <% client.items.uniq.pluck(:product_id).each do |order| %>
-     <%= Product.find(order).id %> - <%= Product.find(order).content %><br />
+    <% orderedProducts(client) %>
+    <% @orderedProductsAll.uniq.each do |product| %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= Product.find(product).id %>
+        </div>
+        <div class="col-md-10">
+          <%= Product.find(product).content %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

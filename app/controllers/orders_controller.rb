@@ -26,7 +26,11 @@ class OrdersController < ApplicationController
       if @order.save
         @order.items.each do |item|
           product = Product.find(item.product_id)
-          stack_size = product.qty - item.ordered_product_quantity
+          if item.ordered_product_quantity.nil?
+            stack_size = product.qty
+          else
+            stack_size = product.qty - item.ordered_product_quantity
+          end
           product.update_attributes(qty: stack_size)
         end
         format.html { redirect_to client, notice: 'Zamówienie zostało dodane.' }
@@ -41,7 +45,11 @@ class OrdersController < ApplicationController
     @order = @orders.find(params[:id])
     @order.items.each do |item|
       product = Product.find(item.product_id)
-      stack_size = product.qty + item.ordered_product_quantity
+      if item.ordered_product_quantity.nil?
+        stack_size = product.qty
+      else
+        stack_size = product.qty + item.ordered_product_quantity
+      end
       product.update_attributes(qty: stack_size)
     end
 

@@ -4,7 +4,8 @@
       <% if current_user.admin? || mode_type == 'new' %>
         <%= render 'products/edit_partials/listing', name: "Numer skupu", product_details: :buy_number, fieldType: "string", form: form %>
       <% else %>
-        <%= render 'products/show_partials/listing', name: "Numer skupu", product_details: @product.buy_number %>
+        <%= render 'products/edit_partials/listing', name: "Numer skupu", product_details: :buy_number, fieldType: "string", form: form %>
+        <%# <%= render 'products/show_partials/listing', name: "Numer skupu", product_details: @product.buy_number %> %>
       <% end %>
       <%= render 'products/edit_partials/listing', name: "Długość", product_details: :length, fieldType: "float", form: form %>
       <%= render 'products/edit_partials/listing', name: "Gramatura", product_details: :gramature, fieldType: "float", form: form %>
