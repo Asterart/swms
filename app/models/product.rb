@@ -11,11 +11,21 @@ class Product < ApplicationRecord
   has_many :clients, through: :orders
 
 
-  scope :id, -> (id) { where id: id }
-  scope :range_min, -> (range_min) { where('qty >= ?', range_min) }
+  scope :product_index, -> (product_index) { where('lower(product_index) LIKE ?', "%#{product_index.downcase}%") }
+
+  scope :length_min, -> (length_min) { where('length >= ?', length_min) }
+  scope :length_max, -> (length_max) { where('length <= ?', length_max) }
+
   scope :range_max, -> (range_max) { where('qty <= ?', range_max) }
-  # scope :name_id, -> (name_id) { where('lower(name) LIKE ? OR lower(content) LIKE ?', "%#{name_id}%", "%#{name_id}%")}
-  scope :content, -> (content) { where('lower(name) LIKE ? OR lower(content) LIKE ? OR lower(product_index) LIKE ? OR lower(buy_number) LIKE ? OR lower(structure) LIKE ? OR lower(color) LIKE ? OR length = ?', "%#{content.downcase}%", "%#{content.downcase}%", "%#{content.downcase}%", "%#{content.downcase}%", "%#{content.downcase}%", "%#{content.downcase}%", content.to_f )}
+  scope :range_min, -> (range_min) { where('qty >= ?', range_min) }
+
+  scope :color, -> (color) { where('lower(color) LIKE ? OR lower(name) LIKE ? OR lower(content) LIKE ?', "%#{color.downcase}%", "%#{color.downcase}%", "%#{color.downcase}%") }
+
+  scope :structure, -> (structure) { where('lower(structure) LIKE ?', "%#{structure.downcase}%") }
+
+  # scope :gramature, -> (gramature) { cast('gramature' AS int) AS "gramat_int" where('gramat_int <= ?', gramature) }
+
+  scope :content, -> (content) { where('lower(name) LIKE ? OR lower(content) LIKE ? OR lower(buy_number) LIKE ? OR lower(color) LIKE ? OR length = ?', "%#{content.downcase}%", "%#{content.downcase}%", "%#{content.downcase}%", "%#{content.downcase}%", content.to_f )}
 
   enum product_kind: [:włosy, :kosmetyki, :akcesoria, :urządzenia, :inne]
 

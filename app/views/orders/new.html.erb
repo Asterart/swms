@@ -25,22 +25,22 @@
       <div class="col-md-1 orders-total">
         <%= form.number_field :total, step: "0.01", style: "width: 100%;" %>
       </div>
-      <div class="col-md-2 orders-delivery">
+      <div class="col-md-1 orders-delivery">
         <%= form.text_field :delivery %>
       </div>
-      <div class="col-md-4 orders-products">
+      <div class="col-md-5 orders-products">
         <div style="display:flex">
-          <div class="col-md-8">Produkt:</div>
-          <div class="col-md-3">Ilość:</div>
+          <div class="col-md-9">Produkt:</div>
+          <div class="col-md-2">Ilość:</div>
           <div class="col-md-1"></div>
         </div>
         <%= form.fields_for :items do |i| %>
           <div style="display:flex">
-            <div class="col-md-8">
+            <div class="col-md-9">
               <%# <%= i.collection_select(:product_id, Product.all.order('content ASC'), :id, :content, {include_blank: true}, {class: "order-items-attributes"} ) %>
               <%= i.collection_select(:product_id, @products, :id, :content, {include_blank: true}, {class: "order-items-attributes"} ) %>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <%= i.number_field :ordered_product_quantity, step: "1", class: "order-items-attributes" %>
             </div>
             <div class="col-md-1">

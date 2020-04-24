@@ -54,6 +54,9 @@
       input[name="image"]{
         width: inherit;
       }
+      input[name="product_index"]{
+        width: inherit;
+      }
     }
     .products-names{
       min-width: min-content;
@@ -62,6 +65,9 @@
       margin-top: auto;
       margin-bottom: auto;
       input[name="name"]{
+        width: inherit;
+      }
+      input[name="content"]{
         width: inherit;
       }
     }

@@ -17,7 +17,7 @@ module ClientsHelper
       end
       @avg = (@totalOrderSum/totalNumberOfOrders).round(2)
     else
-      @arg = 0
+      @avg = 0
     end
 
     @spendThisMonth = 0
@@ -28,7 +28,6 @@ module ClientsHelper
     end
 
   end
-
 
   def orderedProducts(client)
     products = []
@@ -52,6 +51,10 @@ module ClientsHelper
         end
       end
     end
+
+  end
+
+  def statsChart(client)
 
   end
 

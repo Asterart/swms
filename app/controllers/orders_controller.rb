@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
   before_action :products, only: [:new]
 
   def index
-    @orders = Order.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
+    @orders = Order.all.where.not(total: 0).order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
     @clients = Client.all
     @order = Order.new
-    10.times do
+    30.times do
       @order.items.new
     end
   end
@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
         @order.items.each do |item|
           product = Product.find(item.product_id)
           if item.ordered_product_quantity.nil?
+            item.ordered_product_quantity = 0
             stack_size = product.qty
           else
             stack_size = product.qty - item.ordered_product_quantity
@@ -46,6 +47,7 @@ class OrdersController < ApplicationController
     @order.items.each do |item|
       product = Product.find(item.product_id)
       if item.ordered_product_quantity.nil?
+        item.ordered_product_quantity = 0
         stack_size = product.qty
       else
         stack_size = product.qty + item.ordered_product_quantity

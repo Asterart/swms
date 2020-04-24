@@ -9,11 +9,16 @@ class ProductsController < ApplicationController
   def index
     # @products = Product.all
     @products = Product.where(nil).order(content: :asc).paginate(:page => params[:page], :per_page => 25)
-    @products = @products.id(params[:id]) if params[:id].present?
-    # @products = @products.name_id(params[:name]) if params[:name].present?
+    @products = @products.product_index(params[:product_index]) if params[:product_index].present?
+    @products = @products.length_min(params[:length_min]) if params[:length_min].present?
+    @products = @products.length_max(params[:length_max]) if params[:length_max].present?
+    @products = @products.color(params[:color]) if params[:color].present?
+    @products = @products.structure(params[:structure]) if params[:structure].present?
+    # @products = @products.gramature(params[:gramature]) if params[:gramature].present?
     @products = @products.content(params[:content]) if params[:content].present?
     @products = @products.range_min(params[:range_min]) if params[:range_min].present?
     @products = @products.range_max(params[:range_max]) if params[:range_max].present?
+
 
     # respond_to do |format|
     #   format.html
@@ -28,8 +33,11 @@ class ProductsController < ApplicationController
 
   def missing
     @missing_products = Product.where("qty < 0").paginate(:page => params[:page], :per_page => 25)
-    @missing_products = @missing_products.id(params[:id]) if params[:id].present?
-    # @missing_products = @missing_products.name_id(params[:name]) if params[:name].present?
+    @missing_products = @missing_products.product_index(params[:product_index]) if params[:product_index].present?
+    @missing_products = @missing_products.length_min(params[:length_min]) if params[:length_min].present?
+    @missing_products = @missing_products.length_max(params[:length_max]) if params[:length_max].present?
+    @missing_products = @missing_products.color(params[:color]) if params[:color].present?
+    @missing_products = @missing_products.structure(params[:structure]) if params[:structure].present?
     @missing_products = @missing_products.content(params[:content]) if params[:content].present?
     @missing_products = @missing_products.range_min(params[:range_min]) if params[:range_min].present?
     @missing_products = @missing_products.range_max(params[:range_max]) if params[:range_max].present?

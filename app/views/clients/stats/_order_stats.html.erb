@@ -15,12 +15,12 @@
 </p>
 <div class="row">
   <div class="col-md-6">
-    <% client.orders.includes(:items) %>
+    <% orderedProducts(client) %>
+    <%# <%= pie_chart @orderedProducts.group(:product_kind).count, title: 'Stosunek zamawianych produktów' %> %>
     <%= pie_chart client.items.group(:product_id).count, title: 'Stosunek zamawianych produktów' %>
   </div>
   <div class="col-md-6">
     <p>Legenda</p>
-    <% orderedProducts(client) %>
     <% @orderedProductsAll.uniq.each do |product| %>
       <div class="row">
         <div class="col-md-2">
