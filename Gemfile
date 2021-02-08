@@ -10,7 +10,7 @@ gem 'bootstrap', '>= 4.3.1'
 # datepicker
 gem 'bootstrap-datepicker-rails'
 # Image uploading section
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 1.3.2'
 # gem for chart
 gem "chartkick"
 # Use CoffeeScript for .coffee assets and views
